@@ -3,8 +3,20 @@ class AlunosController < ApplicationController
 
   # GET /alunos or /alunos.json
   def index
-    @alunos = Aluno.all
+  @alunos = Aluno.page(params[:page]).per(10)
+
+  respond_to do |format|
+    format.html # continua carregando a página normal
+    format.pdf do
+      pdf = Prawn::Document.new
+      pdf.text "Lista de Alunos", size: 20, style: :bold
+      Aluno.all.each do |a|
+        pdf.text "#{a.id} - #{a.nome} - #{a.cpf}"
+      end
+      send_data pdf.render, filename: "alunos.pdf", type: "application/pdf"
+    end
   end
+end
 
   # GET /alunos/1 or /alunos/1.json
   def show

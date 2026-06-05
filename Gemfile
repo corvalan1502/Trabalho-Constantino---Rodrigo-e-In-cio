@@ -66,7 +66,10 @@ group :test do
 end
 
 # Gems obrigatórias do Trabalho Final da UESPI
-gem 'kaminari'                  # Para paginação de listas
-gem 'devise'                    # Para autenticação de usuários
-gem 'twitter-bootstrap-rails'   # Para o visual com Bootstrap
-gem 'prawn'                     # Para geração de relatórios em PDF
+gem "kaminari"                  # Para paginação de listas
+gem "devise"                    # Para autenticação de usuários
+gem "twitter-bootstrap-rails"   # Para o visual com Bootstrap
+gem "prawn"                     # Para geração de relatórios em PDF
+gem "bootstrap", "~> 5.3"
+gem "sassc-rails"
+gem "prawn-table"
