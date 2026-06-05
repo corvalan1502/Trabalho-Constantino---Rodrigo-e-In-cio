@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_05_175203) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_05_180948) do
+  create_table "alunos", force: :cascade do |t|
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.date "data_nascimento"
+    t.string "nome"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "disciplinas", force: :cascade do |t|
     t.integer "carga_horaria"
+    t.integer "codigo"
     t.datetime "created_at", null: false
     t.string "nome"
     t.datetime "updated_at", null: false
@@ -22,6 +31,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_05_175203) do
     t.integer "aluno_id", null: false
     t.datetime "created_at", null: false
     t.integer "disciplina_id", null: false
+    t.float "nota"
+    t.string "semestre"
     t.datetime "updated_at", null: false
     t.index ["aluno_id"], name: "index_matriculas_on_aluno_id"
     t.index ["disciplina_id"], name: "index_matriculas_on_disciplina_id"
