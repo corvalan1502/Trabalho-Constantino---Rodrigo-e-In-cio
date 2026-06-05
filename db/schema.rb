@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_05_173522) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_05_175203) do
   create_table "disciplinas", force: :cascade do |t|
     t.integer "carga_horaria"
     t.datetime "created_at", null: false
     t.string "nome"
     t.datetime "updated_at", null: false
   end
+
+  create_table "matriculas", force: :cascade do |t|
+    t.integer "aluno_id", null: false
+    t.datetime "created_at", null: false
+    t.integer "disciplina_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aluno_id"], name: "index_matriculas_on_aluno_id"
+    t.index ["disciplina_id"], name: "index_matriculas_on_disciplina_id"
+  end
+
+  add_foreign_key "matriculas", "alunos"
+  add_foreign_key "matriculas", "disciplinas"
 end
